@@ -121,28 +121,13 @@ int main()
 		int dealer_hand_value=0;
 		int player_hand_value=0;
 		
-		char answer[5];
+		char answer[16];
 		int bet=0;
 		int dealer_turn=0; // Ama ginei 1 ksekinaei h seira tou dealer
 		int end_hand=0;
 		while (player_hand_value<21 & end_hand==0) // O paikths travaei ki allh karta an h aksia tous einai mikroterh tou 21 kai den exei epileksei na stamatisei
 		{	
-			// O dealer travaei karta mono thn prwth fora
-			if (dealer_card_count==0)
-				draw_card(dealer_hand,&dealer_card_count,&dealer_hand_value);
-				Sleep(1000); // Prepei na perimenei ligo gia na mh vgoun oi idies kartes kai gia tous dyo paiktes
-			
-			draw_card(player_hand,&player_card_count,&player_hand_value);
-			
-			printf("\n\n");
-			print_hand(dealer_hand,dealer_card_count);
-			printf("\n Dealer's hand: %d",dealer_hand_value);
-			
-			printf("\n\n");	
-			print_hand(player_hand,player_card_count);
-			printf("\n Player's hand: %d",player_hand_value);
-			
-			// Zhtaei apo ton paikth to pontarisma, mono thn prwth fora
+         // Zhtaei apo ton paikth to pontarisma, mono thn prwth fora
 			if (bet==0)
 			{
 				do
@@ -158,6 +143,21 @@ int main()
 				}
 				while (bet<=0 | bet>player_balance | bet>dealer_balance);
 			}
+
+			// O dealer travaei karta mono thn prwth fora
+			if (dealer_card_count==0)
+				draw_card(dealer_hand,&dealer_card_count,&dealer_hand_value);
+				Sleep(1000); // Prepei na perimenei ligo gia na mh vgoun oi idies kartes kai gia tous dyo paiktes
+			
+			draw_card(player_hand,&player_card_count,&player_hand_value);
+			
+			printf("\n\n");
+			print_hand(dealer_hand,dealer_card_count);
+			printf("\n Dealer's hand: %d",dealer_hand_value);
+			
+			printf("\n\n");	
+			print_hand(player_hand,player_card_count);
+			printf("\n Player's hand: %d",player_hand_value);
 			
 			// Rotaei ton paikth an thelei na synexisei, ean oi kartes tou einai mikroteres tou 21
 			if (player_hand_value<21)
